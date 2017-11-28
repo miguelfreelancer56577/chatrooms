@@ -1,0 +1,65 @@
+<md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">My Fevorite Chat.</h2>
+    </div>
+  </md-toolbar>
+
+  <md-content flex layout-padding layout-margin>
+  
+	<div layout="column">
+	  <div flex id="room">
+	  	{{you}}, Welcome to {{currentRoom}}
+	  	<md-divider></md-divider>
+	  </div>
+
+	  <div flex>
+
+	  	<div layout="row">
+  	
+	  		<div flex style="height: 324px; overflow: scroll" overflow: scroll" id='messages'>
+	  			<md-subheader class="md-no-sticky">Chat:</md-subheader>
+                <div ng-repeat="msg in messages track by $index">{{msg}}</div>
+	  		</div>
+            
+		  	<div flex>
+		  		<div layout="column">
+				  <div flex style="height: 100px; overflow: scroll" id='room-list'>
+                          <div>Room list:</div>
+                          <ul>
+                              <li ng-repeat="rl in roomList track by $index" ng-click="changeRoom(rl)">{{rl}}</li>
+                          </ul>
+                  </div>
+				  <div flex >
+
+				  	<form id='send-form'>
+
+				  		
+                        <md-input-container class="md-block">
+                            <input id='send-message' ng-model="sendMessage" />
+                        </md-input-container>
+						<div >
+                            <md-button class="md-raised" ng-disabled="!sendMessage" ng-click="processUserInput(sendMessage, currentRoom)">Send</md-button>
+						</div>
+
+                        <md-divider></md-divider>
+                          <md-subheader class="md-no-sticky">Chat commands:</md-subheader>
+                          <ul>
+                              <li ng-repeat="ins in instructions track by $index">{{ins}}</li>
+                          </ul>
+
+					</form>
+
+				  </div>
+				</div>
+		  	</div>
+
+  		</div>
+
+	  </div>
+
+	</div>
+
+  
+
+
+  </md-content>
